@@ -15,11 +15,15 @@ The dataset comprises results exploring the data of the popular streaming platfo
 
 ## Working process
 
-Our project aimed to build a story visualization board, which explored the Symbiosis of Music and Mental Health with Spotify. We explored the harmony in evolution of music over time to understand its core purpose and how it has been used. People choose to listen to music for many reasons such as enjoyment, relaxation, to concentrate, to build energy for workouts and most importantly, to heal. We found that music and mental health are two sides of the same coin.
+The project aimed to build a story visualization board, which explored the Symbiosis of Music and Mental Health with Spotify. It explored the harmony in evolution of music over time to understand its core purpose and how it has been used. People choose to listen to music for many reasons such as enjoyment, relaxation, to concentrate, to build energy for workouts and most importantly, to heal. We found that music and mental health are two sides of the same coin.
 
-Our team narrowed its focus to the avenues with which music is accessible to people and is most popularly used. We found Spotify plays a key role in reaching and connecting millions of people with many kinds of music. Spotify has emerged as the leader of the music streaming industry, one which can be described as rebellious and disruptive [1]. However, while Spotify’s success is an exciting story, we wanted to explore the nexus between music and mental health.
+The focus was narrowed to the avenues with which music is accessible to people and is most popularly used. It was found that Spotify plays a key role in reaching and connecting millions of people with many kinds of music. Spotify has emerged as the leader of the music streaming industry, one which can be described as rebellious and disruptive. However, while Spotify’s success is an exciting story, we wanted to explore the nexus between music and mental health.
 
-With this in mind, we traced the realities of mental health globally in our story. Our data identified anxiety and depression as key factors troubling the mind. We delved deeper into the trends surrounding mental health issues such as lifetime anxiety and/or depression reports as well as indications of treatments. 
+With this in mind, the realities of mental health was traced globally in the dashboard. The data identified anxiety and depression as key factors troubling the mind. The project delved deeper into the trends surrounding mental health issues such as lifetime anxiety and/or depression reports as well as indications of treatments. 
 
-Finally, we investigated the impact of music in helping improve mental health, particularly reported cases of anxiety, depression, insomnia, and OCD. This helped us gain a better understanding of people’s behaviors and their dependency on music. We concluded that although people may rely on music for their own unique reasons, music does have a positive influence in their lives and helps them navigate the fine balance of mental health stability. 
+Finally, the impact of music in helping improve mental health was investigated, particularly reported cases of anxiety, depression, insomnia, and OCD. This helped us gain a better understanding of people’s behaviors and their dependency on music. 
+
+## Conclusion
+
+The project found that although people may rely on music for their own unique reasons, music does have a positive influence in their lives and helps them navigate the fine balance of mental health stability. 
 
