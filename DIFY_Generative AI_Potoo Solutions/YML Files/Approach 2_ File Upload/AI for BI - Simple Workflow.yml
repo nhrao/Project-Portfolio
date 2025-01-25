@@ -1,0 +1,269 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: AI for BI - Simple Workflow (Working)
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1732129636831-source-1732131805202-target
+      source: '1732129636831'
+      sourceHandle: source
+      target: '1732131805202'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1732131805202-source-1733256619543-target
+      source: '1732131805202'
+      sourceHandle: source
+      target: '1733256619543'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: 1733256619543-source-1733336891260-target
+      selected: false
+      source: '1733256619543'
+      sourceHandle: source
+      target: '1733336891260'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: end
+      id: 1733336891260-source-1733256284490-target
+      source: '1733336891260'
+      sourceHandle: source
+      target: '1733256284490'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: user_query
+          max_length: 100
+          options: []
+          required: true
+          type: paragraph
+          variable: user_query
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: file_upload
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: file_upload
+      height: 115
+      id: '1732129636831'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: Doc Extractor
+        type: document-extractor
+        variable_selector:
+        - '1732129636831'
+        - file_upload
+      height: 93
+      id: '1732131805202'
+      position:
+        x: 384
+        y: 282
+      positionAbsolute:
+        x: 384
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1733256619543'
+          - text
+          variable: text
+        - value_selector:
+          - '1733336891260'
+          - files
+          variable: files
+        selected: false
+        title: End
+        type: end
+      height: 115
+      id: '1733256284490'
+      position:
+        x: 1435.923385650387
+        y: 276.3037292134536
+      positionAbsolute:
+        x: 1435.923385650387
+        y: 276.3037292134536
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1732129636831'
+          - user_query
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - id: ab436d12-4d0b-40ab-89a7-dfddb4502413
+          role: system
+          text: "# Job Description: Data Analytics Assistant.\n\n## Task\nAnalyze\
+            \ the provided delimited data (|) in {{#1732131805202.text#}}based on\
+            \ the user query  {{#1732129636831.user_query#}}and perform the following\
+            \ actions:\n\n1. Extract only the RELEVANT COLUMNS and RECORDS necessary\
+            \ to address the query, ensuring data includes all required information\
+            \ related to the brand \"Wusthof\" within the specified time period.\n\
+            2. Generate Python code using the extracted data to:\n - Perform the required\
+            \ calculations (e.g., averages, sums, counts, etc.) as per the user query.\n\
+            - Create an appropriate visualization (e.g., line plot, bar chart, scatter\
+            \ plot, etc.) with clear labels to effectively represent the trends or\
+            \ insights derived from the analysis.\n\nEnsure the code is concise, properly\
+            \ formatted, and includes all necessary package installations and imports.\
+            \ Do not provide comments or additional explanations in the code. Only\
+            \ the Python code should be presented in the response.\n\n### Constraint\n\
+            \nDON'T include 'python\\n' in the code at all.\nDON'T hallucinate the\
+            \ data"
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1733256619543'
+      position:
+        x: 703.6647446630026
+        y: 282
+      positionAbsolute:
+        x: 703.6647446630026
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: code
+        provider_name: code
+        provider_type: builtin
+        selected: false
+        title: Code Interpreter
+        tool_configurations: {}
+        tool_label: Code Interpreter
+        tool_name: simple_code
+        tool_parameters:
+          code:
+            type: mixed
+            value: '{{#1733256619543.text#}}'
+          language:
+            type: mixed
+            value: python3
+        type: tool
+      height: 53
+      id: '1733336891260'
+      position:
+        x: 1046.2071207622823
+        y: 282
+      positionAbsolute:
+        x: 1046.2071207622823
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 20.405015466402574
+      y: 21.850000000000023
+      zoom: 0.6999999999999998

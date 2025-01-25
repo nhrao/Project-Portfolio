@@ -1,0 +1,293 @@
+app:
+  description: HTTP node + JSON Parse tool
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 'AI for BI - API Access '
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: http-request
+      id: 1731623449799-source-1731623698659-target
+      source: '1731623449799'
+      sourceHandle: source
+      target: '1731623698659'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: end
+      id: 1733154719158-source-1733154117363-target
+      source: '1733154719158'
+      sourceHandle: source
+      target: '1733154117363'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: tool
+      id: 1731623698659-source-1733284804872-target
+      source: '1731623698659'
+      sourceHandle: source
+      target: '1733284804872'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: llm
+      id: 1733284804872-source-1733154719158-target
+      source: '1733284804872'
+      sourceHandle: source
+      target: '1733154719158'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: start_date
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: start_date
+        - label: end_date
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: end_date
+        - label: brand
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: brand
+        - label: question
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: question
+      height: 167
+      id: '1731623449799'
+      position:
+        x: 191.36976981188732
+        y: 283.2622253369338
+      positionAbsolute:
+        x: 191.36976981188732
+        y: 283.2622253369338
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config:
+            api_key: xTv8Y64aTy9DjS7VKIvhqaKgQJGV6lR5aZkVKAcZ
+            header: xTv8Y64aTy9DjS7VKIvhqaKgQJGV6lR5aZkVKAcZ
+            type: bearer
+          type: api-key
+        body:
+          data: []
+          type: none
+        desc: ''
+        headers: 'x-api-key:xTv8Y64aTy9DjS7VKIvhqaKgQJGV6lR5aZkVKAcZ
+
+          Content-Type:application/json'
+        method: get
+        params: 'start_date:2024-01-01
+
+          end_date:2024-01-01
+
+          brand:Wusthof
+
+          page:1'
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP Request
+        type: http-request
+        url: https://bgji50hqd6.execute-api.us-west-2.amazonaws.com/prod/
+        variables: []
+      height: 109
+      id: '1731623698659'
+      position:
+        x: 464.0523936910516
+        y: 278.38422741637044
+      positionAbsolute:
+        x: 464.0523936910516
+        y: 278.38422741637044
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1733154719158'
+          - text
+          variable: Output
+        selected: false
+        title: End
+        type: end
+      height: 89
+      id: '1733154117363'
+      position:
+        x: 1347.4607099240566
+        y: 283.2622253369338
+      positionAbsolute:
+        x: 1347.4607099240566
+        y: 283.2622253369338
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            frequency_penalty: 0.3
+            max_tokens: 4096
+            presence_penalty: 0.2
+            response_format: text
+            temperature: 0.5
+            top_p: 0.85
+          mode: chat
+          name: gpt-4o
+          provider: openai
+        prompt_template:
+        - edition_type: basic
+          id: 64122614-9931-460e-91a1-41b65f913b63
+          role: system
+          text: "# Job Description: Data Analyst Assistant\n \n## Task\nAnalyze the\
+            \ provided  data based on {{#1731623449799.question#}}  and perform the\
+            \ following actions:\n \nExtract only the RELEVANT ROWS necessary to address\
+            \ the query, ensuring data only includes information related to {{#1731623449799.brand#}}in\
+            \ the range of {{#1731623449799.start_date#}} and {{#1731623449799.end_date#}}.\n\
+            \nProvide a succinct response by using data from {{#1733284804872.text#}}to\
+            \ answer the question as relevant.\n\nBe consistent with the answer given\
+            \ in response to {{#1731623449799.question#}}.\n\n## Constraints\nDo not\
+            \ hallucinate when giving your responses.\n"
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 97
+      id: '1733154719158'
+      position:
+        x: 1045.8302854592039
+        y: 283.2622253369338
+      positionAbsolute:
+        x: 1045.8302854592039
+        y: 283.2622253369338
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: json_process
+        provider_name: json_process
+        provider_type: builtin
+        selected: false
+        title: JSON Parse
+        tool_configurations:
+          ensure_ascii: 1
+        tool_label: JSON Parse
+        tool_name: parse
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#1731623698659.body#}}'
+          json_filter:
+            type: mixed
+            value: '$.data[*][''DATE'' , ''SKU'', ''PRODUCT_NAME'', ''UPC'' , ''RETAILER_ITEM_PRICE''
+              ]
+
+
+              '
+        type: tool
+      height: 89
+      id: '1733284804872'
+      position:
+        x: 774.3269006290861
+        y: 283.2622253369338
+      positionAbsolute:
+        x: 774.3269006290861
+        y: 283.2622253369338
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 21.887204278580384
+      y: -5.974627502560281
+      zoom: 0.7709953261823916
