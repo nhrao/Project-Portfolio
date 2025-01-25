@@ -6,7 +6,7 @@ This project, in collaboration with Potoo Solutions, aimed to enhance business i
 
 To achieve these goals, two distinct workflows were developed and evaluated. The Agentic Workflow used real-time API connections to access and process Potoo Solutions' experimental data for the Wüsthof brand, dynamically retrieving data and leveraging an LLM to generate insights. The Simple Workflow focused on structured Excel data, enabling visual data generation and analysis through LLM processing and Python-executed visualizations.
 
-## Evaludation metrics
+## Evaluation metrics
 
 The workflows were evaluated based on Accuracy Score, Faithfulness, and Answer Relevancy, with accuracy further assessed on data extraction, code functionality, and visualization accuracy. Results showed the Agentic Workflow excelled at handling real-time data, while the Simple Workflow proved effective for visual outputs.
 
